@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <h1>Welcome to the great Number Game!!!</h1>
+    <h2>Estoy pensando en un número entre 1 y 100...</h1>
+    <div>
+        <form action="/" method="GET">
+            <p>El valor del numero a adivinar es:{{session["random"]}}</p>
+            <p>El valor que tu ingresaste es:{{session["intentalo"]}}</p>
+        </form>
+    </div>
+    <div class="respuestas">
+        {% if 'intentalo' in session: %}
+            {% if session['intentalo'] > session['random'] %}
+                <p id="grande">"Muy grande, intenta denuevo"</p>
+
+            {% elif session["intentalo"] < session["random"] %}
+                <p id="pequeño">{{"Muy pequeño, intenta denuevo"}}</p>
+
+            {% else %}
+                <p id="atino">{{"Atinaste el numero, felicitaciones!"}}</p>
+                <form action="/reset" method="GET">
+                    <input type="submit" value="Jugar denuevo">
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="respuestas">
+        <form action="/intento" method="POST">
+            <label for="intentalo">
+                Vamosa intentalo:
+            </label>
+            <input type="text" name="intentalo">
+            <input type="submit">
+        </form>
+    </div>
+    <div>
+        <form action="/numerodevecesintentando" method="POST">
+            <p>Usted a intentando este numero de intentos: {{session["oportunidades"]}}</p>
+        </form>
+    </div>
+    <div class="respuestas">
+        {% if 'oportunidades' in session: %}
+            {% if session['oportunidades'] >= 5 %}
+                <p id="perdio">Game Over!!!</p>
+                <form action="/reset" method="GET">
+                    <input type="submit" value="Jugar denuevo">
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
+
+</body>
+</html>

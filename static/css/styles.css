@@ -1,0 +1,57 @@
+*{
+    text-align: center;
+}
+
+.respuestas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.respuestas>form{
+    margin-bottom: 20px;
+}
+
+#grande{
+    width: 250px;
+    height: 100px;
+    display: flex;
+    background-color: green;
+    color: white;
+    justify-content: center;
+    align-items: center
+}
+
+#pequeño{
+    width: 250px;
+    height: 100px;
+    display: flex;
+    background-color: red;
+    color: white;
+    justify-content: center;
+    align-items: center
+
+}
+
+#atino{
+    width: 250px;
+    height: 100px;
+    display: flex;
+    background-color: blue;
+    color: white;
+    justify-content: center;
+    align-items: center
+}
+
+#perdio{
+    width: 250px;
+    height: 100px;
+    display: flex;
+    background-color: rgb(255, 0, 0);
+    font-size: 30px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
